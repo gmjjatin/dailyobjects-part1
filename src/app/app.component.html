@@ -27,7 +27,7 @@
 </div>
 <div class="container">
 
-
+  <!-- Followers Details Page Component -->
   <template [ngIf]="selectedUser.id">
     <ol class="breadcrumb">
       <li><a (click)="go('home')">Home</a></li>
@@ -72,6 +72,7 @@
 
   </template>
 
+  <!-- View Details Page (Repo details) Component -->
   <template [ngIf]="selectedUserDetail.id">
     <ol class="breadcrumb">
       <li><a (click)="go('home')">Home</a></li>
@@ -91,7 +92,6 @@
           <h4 class="media-heading">bio : {{selectedUserDetail.bio}}</h4>
           <h4 class="media-heading">Public Gists : {{selectedUserDetail.public_gists}}</h4>
           <h4 class="media-heading">Public Repos : {{selectedUserDetail.public_repos}}</h4>
-          <button (click)="viewFollower(selectedUserDetail)" class="btn btn-primary" role="button">View Followers</button>
         </div>
       </div>
 
@@ -128,7 +128,7 @@
   </template>
 
 
-  <!-- Example row of columns -->
+  <!-- Home Page Component -->
   <div class="row">
 
     <template [ngIf]="!selectedUser.id && !selectedUserDetail.id">

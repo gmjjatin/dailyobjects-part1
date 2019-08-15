@@ -60,6 +60,9 @@ export class AppComponent implements OnInit {
      */
     onSearch(q: string) {
 
+      this.selectedUser = new User();
+      this.selectedUserDetail = new User();
+      
         if (q !== "") {
             this.search.next(q);
         } else {
@@ -69,6 +72,7 @@ export class AppComponent implements OnInit {
 
     }
 
+    // Acts like a router
     go(s: string) {
 
         if (s == 'home') {
@@ -79,6 +83,7 @@ export class AppComponent implements OnInit {
         }
     }
 
+    // Load Followers Page
     viewFollower(user: User) {
 
         this.selectedUser = user;
@@ -109,6 +114,7 @@ export class AppComponent implements OnInit {
 
     }
 
+    // Load User Details, Repos Page
     viewDetail(user: User) {
         this.selectedUser = new User();
         this.selectedUserDetail = user;
@@ -140,7 +146,7 @@ export class AppComponent implements OnInit {
     }
 
     /**
-     * we storage selected user and dont again to api. just simply function for now.
+     * we store selected user in cache
      * */
 
     cacheSelectUser(user: User) {
