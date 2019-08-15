@@ -1,0 +1,9 @@
+.caption h4{
+  text-align: center;
+}
+.caption .btn.btn-primary{
+  position: relative;
+  left:50%;
+  transform: translateX(-50%);
+  margin-bottom: 10px;
+}

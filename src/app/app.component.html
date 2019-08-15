@@ -1,0 +1,158 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+              aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Used Github Open APIs</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <form class="navbar-form navbar-right">
+        <div class="form-group">
+          <input #input (keyup)="onSearch(input.value)" type="text" placeholder="Search users..." class="form-control">
+        </div>
+      </form>
+    </div><!--/.navbar-collapse -->
+  </div>
+</nav>
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>{{title}}</h1>
+  </div>
+</div>
+<div class="container">
+
+
+  <template [ngIf]="selectedUser.id">
+    <ol class="breadcrumb">
+      <li><a (click)="go('home')">Home</a></li>
+      <li class="active">{{selectedUser.login}}</li>
+    </ol>
+
+    <div class="view-profile">
+
+      <div class="media">
+        <div class="media-left">
+          <img width="100" height="100" class="media-object" [src]="selectedUser.avatar_url">
+        </div>
+        <div class="media-body">
+          <h4 class="media-heading">Username : {{selectedUser.login}}</h4>
+
+          <button (click)="viewDetail(selectedUser)" class="btn btn-primary" role="button">More info</button>
+        </div>
+      </div>
+
+    </div>
+    <hr/>
+    <h2><span *ngIf="loadingFollowers">Followers loading...</span><span *ngIf="!loadingFollowers">Followers</span></h2>
+    <template [ngIf]="selectedUser.followers">
+      <div class="row">
+        <div *ngFor="let follower of selectedUser.followers" class="col-xs-6 col-md-2">
+
+          <div class="thumbnail">
+            <img [src]="follower.avatar_url">
+            <div class="caption">
+              <h4>{{follower.login}}</h4>
+
+                <button (click)="viewFollower(follower)" class="btn btn-primary" role="button">Followers</button>
+                <button (click)="viewDetail(follower)" class="btn btn-primary" role="button">More info</button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </template>
+
+
+  </template>
+
+  <template [ngIf]="selectedUserDetail.id">
+    <ol class="breadcrumb">
+      <li><a (click)="go('home')">Home</a></li>
+      <li class="active">{{selectedUserDetail.login}}</li>
+    </ol>
+
+    <div class="view-profile">
+
+      <div class="media">
+        <div class="media-left">
+          <img width="100" height="100" class="media-object" [src]="selectedUserDetail.avatar_url">
+        </div>
+        <div class="media-body">
+          <h4 class="media-heading">Username : {{selectedUserDetail.login}}</h4>
+          <h4 class="media-heading">Name : {{selectedUserDetail.name}}</h4>
+          <h4 class="media-heading">Location : {{selectedUserDetail.location}}</h4>
+          <h4 class="media-heading">bio : {{selectedUserDetail.bio}}</h4>
+          <h4 class="media-heading">Public Gists : {{selectedUserDetail.public_gists}}</h4>
+          <h4 class="media-heading">Public Repos : {{selectedUserDetail.public_repos}}</h4>
+          <button (click)="viewFollower(selectedUserDetail)" class="btn btn-primary" role="button">View Followers</button>
+        </div>
+      </div>
+
+    </div>
+    <hr/>
+    <h2><span *ngIf="loadingDetails">Repos loading...</span><span *ngIf="!loadingDetails">Repos</span></h2>
+    <template [ngIf]="selectedUserDetail.repos">
+      <div class="row">
+        <table class="table">
+           <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Description</th>
+              <th scope="col">Forks</th>
+              <th scope="col">Issues</th>
+              <th scope="col">Clone url</th>
+            </tr>
+           </thead>
+            <tbody>
+              <tr *ngFor="let repo of selectedUserDetail.repos">
+                <td scope="row">{{repo.name}}</td>
+                <td>{{repo.description}}</td>
+                <td>{{repo.forks_count}}</td>
+                <td>{{repo.open_issues_count}}</td>
+                <td><a href="{{repo.ssh_url}}">SSH</a></td>
+              </tr>
+            </tbody>
+        </table>
+      </div>
+
+    </template>
+
+
+  </template>
+
+
+  <!-- Example row of columns -->
+  <div class="row">
+
+    <template [ngIf]="!selectedUser.id && !selectedUserDetail.id">
+      <div *ngFor="let user of users" class="col-xs-6 col-md-2">
+
+        <div class="thumbnail">
+          <img [src]="user.avatar_url">
+          <div class="caption">
+            <h4>{{user.login}}</h4>
+
+              <button (click)="viewFollower(user)" class="btn btn-primary" role="button">Followers</button>
+              <button (click)="viewDetail(user)" class="btn btn-primary" role="button">More info</button>
+
+          </div>
+        </div>
+      </div>
+    </template>
+
+
+  </div>
+
+  <hr>
+
+  <footer>
+    <p>&copy; By <a href="https://gitdub.com/gmjjatin/">Jatin</a></p>
+  </footer>
+</div> <!-- /container -->
