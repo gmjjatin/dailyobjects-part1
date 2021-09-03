@@ -1,8 +1,8 @@
 #TLDR
 
-Its assignment project asked to be completed for DailyObjects for job.
+Its MEAN Stack (angular) based project to create customer portal for DailyObjects.
 
-It uses html ,css.
+It uses html ,css, javascript.
 
 ## Development server
 
