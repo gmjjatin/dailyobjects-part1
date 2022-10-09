@@ -1,6 +1,6 @@
 #TLDR
 
-Its MEAN Stack (angular) based project to create customer portal for DailyObjects.
+Its MEAN Stack (angular) based project to create customer portal for DailyObjects recruitment assignment.
 
 It uses html ,css, javascript.
 
