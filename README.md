@@ -2,7 +2,7 @@
 
 Its MEAN Stack (angular) based project to create customer portal for DailyObjects recruitment assignment.
 
-It uses html ,css, javascript.
+It uses html ,css, javascript and angular
 
 ## Development server
 
